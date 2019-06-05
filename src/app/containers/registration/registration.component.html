@@ -1,0 +1,64 @@
+<!-- <p>
+  registration works!
+</p>
+<button type="button" routerLink="/login">login</button> -->
+
+<div fxLayout="row" fxLayoutAlign="center stretch">
+  <mat-card fxFlex="20%;" fxFlex.xs="70%" fxFlex.sm="40%" fxFlex.md="30%">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+      <div align="center">
+          <!-- <img src="./assets/img/keep-icon.png" height=25% width=25%> -->
+      </div><br>
+      <div align="center"><label><b>Sign Up For Fundoo Note</b></label></div>
+      <div class="form-group" class="example-container">
+          <mat-form-field>
+              <input matInput placeholder="Enter your full name" formControlName="name" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+              <mat-error *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                  <mat-error *ngIf="f.name.errors.required">full Name is required</mat-error>
+                  <mat-error *ngIf="f.name.errors.pattern">please give alphabets only with min 3 alphabet
+                  </mat-error>
+              </mat-error>
+          </mat-form-field>
+      </div>
+      <div class="form-group" class="example-container">
+          <mat-form-field>
+              <input matInput placeholder="Enter your emailId" formControlName="emailId" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }" />
+              <mat-error *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
+                  <mat-error *ngIf="f.emailId.errors.required">emailId is required</mat-error>
+                  <mat-error *ngIf="f.emailId.errors.pattern">please give the example like this Eg:abc@gmail.com
+                  </mat-error>
+              </mat-error>
+          </mat-form-field>
+      </div>
+      <div class="form-group" class="example-container">
+          <mat-form-field>
+              <input matInput placeholder="Enter your mobile Number" formControlName="mobileNumber"
+                  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" />
+              <mat-error *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
+                  <mat-error *ngIf="f.mobileNumber.errors.required">mobile Number is required</mat-error>
+                  <mat-error *ngIf="f.mobileNumber.errors.pattern">10 digit phone number</mat-error>
+              </mat-error>
+          </mat-form-field>
+      </div>
+      <div class="form-group" class="example-container">
+          <mat-form-field>
+              <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <mat-error *ngIf="f.password.errors.required">Password is required</mat-error>
+                  <mat-error *ngIf="f.password.errors.minlength">Password must be at least 4 characters
+                  </mat-error>
+              </mat-error>
+          </mat-form-field>
+      </div>
+      <div class="form-group">
+          <button [disabled]="loading" class="btn btn-primary"><b>Sign up For Fundoo Note</b></button>
+          <div>Already have an account?
+              <a [routerLink]="['/login']" class="btn btn-link">Sign In</a></div>
+      </div>
+  </form>
+</mat-card>
+</div>

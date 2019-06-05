@@ -1,0 +1,12 @@
+:host {
+    .button-row {
+        display: flex;
+        justify-content: space-between;
+        .forgot {
+            align-self: center;
+        }
+    }
+    .new-user {
+        margin-top: 20px;
+    }
+}

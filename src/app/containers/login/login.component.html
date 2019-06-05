@@ -1,0 +1,49 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex="20%;" fxFlex.xs="70%" fxFlex.sm="40%" fxFlex.md="30%">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+      <div align="center">
+        <img src="http://tineye.com/images/widgets/mona.jpg" height=25% width=25%>
+      </div><br>
+      <div align="center"><label><b>Sign In For Fundoo Note</b></label></div><br>
+      <div class="form-group" class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Enter your email" type="email" formControlName="email" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+          <mat-error *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <mat-error *ngIf="f.email.errors.required">
+              *email Id is <strong>required</strong>
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group" class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+            formControlName="password" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <mat-icon matSuffix (click)="hide = !hide">
+            {{hide ? 'visibility_off' : 'visibility'}}
+          </mat-icon>
+          <mat-error *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <mat-error *ngIf="f.password.errors.required">
+              *password is <strong>required</strong>
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-card-actions>
+          <div class="button-row">
+            <button mat-raised-button [disabled]="loginForm.invalid">Sign In</button>
+            <div class="forgot"><a class="btn btn-link" routerLink="/registration">Forgot password?</a></div>
+          </div>
+
+
+          <div class="new-user">New user?
+            <a class="btn btn-link">Sign Up</a>
+          </div>
+        </mat-card-actions>
+      </div>
+    </form>
+  </mat-card>
+</div>
